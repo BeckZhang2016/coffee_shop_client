@@ -6,7 +6,7 @@ import {sync} from 'vuex-router-sync'
 import router from './router/index.js'
 import store from './store/index.js'
 
-// sync(store, router);
+sync(store, router);
 Vue.config.productionTip = false;
 
 new Vue({
