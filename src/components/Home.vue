@@ -1,24 +1,42 @@
 <template>
   <div id="app">
-    {{$store.state.MY_STATE}}
+    {{pageVar}}
     <br>
-    {{$store.state.route.path}}
+    {{MY_STATE}}
+    <br>
+    {{MY_NUM}}
+    <br>
+    <input type="text">
+    <input type="button" value="add" placeholder="asdfas" v-bind:click="changeTextJoin">
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
   export default {
     name: 'app',
-    methods: {
-      myState: function() {
-        return this.$store.state.MY_STATE
-      },
-      myrouter: function() {
-        return this.$store.state.route.path
+    data: function () {
+      return {
+        pageVar: 20
       }
+    },
+    computed: {
+      ...mapGetters({
+        changeTextJoin: 'changeTextJoin'
+      }),
+      ...mapState({
+        MY_STATE: function () {
+          return this.$store.state.MY_STATE
+        },
+        MY_NUM: function () {
+          return this.$store.state.MY_NUM
+        }
+      })
+    },
+    methods: {/*
+      ...mapActions({}),
+      ...mapMutations({})*/
     }
-
   }
 </script>
 

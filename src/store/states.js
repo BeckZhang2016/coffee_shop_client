@@ -5,4 +5,5 @@
 
 export default {
   MY_STATE: 'WEB_SERVER',
+  MY_NUM: 100000
 }

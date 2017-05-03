@@ -4,5 +4,10 @@
 
 
 export default {
+  changeTextJoin: function (state, getters) {
+    return state.MY_STATE + 'asdfas'
+  },
+  changeTextReduce: function (state, getters) {
 
+  }
 }

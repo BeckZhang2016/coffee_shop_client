@@ -5,13 +5,18 @@ import App from './App.vue'
 import {sync} from 'vuex-router-sync'
 import router from './router/index.js'
 import store from './store/index.js'
+import iView from 'iview'
+import 'iView/dist/styles/iview.css'
 
+Vue.use(iView);
 sync(store, router);
 Vue.config.productionTip = false;
 
-new Vue({
+var vm = new Vue({
   router,
   store,
   template: '<App></App>',
   components: {App}
 }).$mount('#app');
+
+vm.$router.push({name: 'Login'});
