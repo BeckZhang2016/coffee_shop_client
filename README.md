@@ -1,4 +1,4 @@
-# firebase
+# Coffee Shop Client
 
 > A Vue.js project
 
