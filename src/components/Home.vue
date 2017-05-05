@@ -1,4 +1,3 @@
-
 <style scoped>
   .layout{
     border: 1px solid #d7dde4;
