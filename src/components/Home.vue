@@ -1,5 +1,6 @@
 <style scoped>
   .layout{
+    height: 100%;
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
@@ -10,7 +11,7 @@
     padding: 10px 15px 0;
   }
   .layout-content{
-    min-height: 200px;
+    min-height: 500px;
     margin: 15px;
     overflow: hidden;
     background: #fff;
@@ -57,15 +58,15 @@
           <div class="layout-logo-left"></div>
           <Menu-item name="1">
             <Icon type="ios-navigate" :size="iconSize"></Icon>
-            <span class="layout-text">选项 1</span>
+            <span class="layout-text" @click="changeRoute('Main')">选项 1</span>
           </Menu-item>
           <Menu-item name="2">
             <Icon type="ios-keypad" :size="iconSize"></Icon>
-            <span class="layout-text">选项 2</span>
+            <span class="layout-text" @click="changeRoute('userManage')">选项 2</span>
           </Menu-item>
           <Menu-item name="3">
             <Icon type="ios-analytics" :size="iconSize"></Icon>
-            <span class="layout-text">选项 3</span>
+            <span class="layout-text" @click="changeRoute('application')">选项 3</span>
           </Menu-item>
         </Menu>
       </i-col>
@@ -77,13 +78,13 @@
         </div>
         <div class="layout-breadcrumb">
           <Breadcrumb>
-            <Breadcrumb-item href="#">首页</Breadcrumb-item>
-            <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
+            <Breadcrumb-item href="">首页</Breadcrumb-item>
+            <Breadcrumb-item href="">应用中心</Breadcrumb-item>
             <Breadcrumb-item>某应用</Breadcrumb-item>
           </Breadcrumb>
         </div>
         <div class="layout-content">
-          <div class="layout-content-main">内容区域</div>
+          <div class="layout-content-main"><keep-alive><router-view></router-view></keep-alive></div>
         </div>
         <div class="layout-copy">
           2011-2016 &copy; TalkingData
@@ -93,6 +94,9 @@
   </div>
 </template>
 <script>
+  import main from './content/Main.vue'
+  import application from './content/Application.vue'
+  import userManage from './content/UserManage.vue'
   export default {
     data () {
       return {
@@ -114,6 +118,10 @@
           this.spanLeft = 5;
           this.spanRight = 19;
         }
+      },
+      changeRoute(route){
+        this.$router.push({name: route});
+        console.log('click ')
       }
     }
   }
