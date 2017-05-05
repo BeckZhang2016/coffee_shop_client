@@ -1,6 +1,6 @@
 <template>
   <div id="register">
-    <Form :model="formItem" :ref="formItem" :rules="ruleFormItem" :label-width="80">
+    <Form :model="formItem" ref="formItem" :rules="ruleFormItem" :label-width="80">
       <Form-item label="用户名" prop="username">
         <Input v-model="formItem.username" placeholder="用户名"></Input>
       </Form-item>
@@ -31,13 +31,14 @@
         </Checkbox-group>
       </Form-item>
       <Form-item>
-        <Button type="primary" class="split">提交</Button>
-        <Button type="ghost" class="mybuttonstyle split">取消</Button>
+        <Button type="primary" class="split" @click="handleSubmit('formItem')">提交</Button>
+        <Button type="ghost" class="mybuttonstyle split" @click="handleCancel">取消</Button>
       </Form-item>
     </Form>
   </div>
 </template>
 <script>
+
   export default {
     name: 'register',
     data () {
@@ -65,13 +66,27 @@
             {required: true, message: 'not Empty', trigger: 'blur'},
             {type: 'email', message: '邮箱格式不正确', trigger: 'blur'}
           ],
-          gender:[
+          gender: [
             {required: true, message: 'not Empty', trigger: 'blur'}
           ],
-          phone:[
+          phone: [
             {required: true, message: 'not Empty', trigger: 'blur'}
           ]
         }
+      }
+    },
+    methods: {
+      handleSubmit(name){
+        this.$refs[name].validate((valid)=>{
+          if(valid){
+            this.$Message.succeed('注册成功')
+          }else {
+            this.$Message.error('注册失败')
+          }
+        })
+      },
+      handleCancel(){
+        this.$router.push({name: 'Home'})
       }
     }
   }
