@@ -1,5 +1,6 @@
 <template>
-  <div id="register">
+  <Row id="register">
+    <Col :md="10" class="atuocenter">
     <Form :model="formItem" ref="formItem" :rules="ruleFormItem" :label-width="80">
       <Form-item label="用户名" prop="username">
         <Input v-model="formItem.username" placeholder="用户名"></Input>
@@ -35,7 +36,8 @@
         <Button type="ghost" class="mybuttonstyle split" @click="handleCancel">取消</Button>
       </Form-item>
     </Form>
-  </div>
+    </Col>
+  </Row>
 </template>
 <script>
 
@@ -93,11 +95,17 @@
 </script>
 <style scoped>
   #register {
+    width: 100%;
+    height: 100%;
+  }
+
+  .atuocenter{
     border: 1px solid #ddd;
     border-radius: 15px;
     box-shadow: 10px 10px 5px #DDD;
     padding: 30px;
     margin: 20px auto;
+
   }
 
   .mybuttonstyle {

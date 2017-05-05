@@ -19,4 +19,4 @@ var vm = new Vue({
   components: {App}
 }).$mount('#app');
 
-vm.$router.push({name: 'Login'});
+// vm.$router.push({name: 'Login'});
