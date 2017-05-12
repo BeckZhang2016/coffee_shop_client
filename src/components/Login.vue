@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import _ from 'lodash'
   export default {
     name: 'login',
     data () {
@@ -47,7 +48,13 @@
       handleSubmit(name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$Message.success('提交成功!');
+            this.$http.post('/CustomUsers/userLogin', {email: this.formInline.user, password: this.formInline.password})
+              .then(function (response) {
+                localStorage.setItem('Authorization', response.email.id);
+              })
+              .catch(function (response) {
+                console.log(response);
+              });
           } else {
             this.$Message.error('表单验证失败!');
           }

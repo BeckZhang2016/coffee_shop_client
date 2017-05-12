@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import {sync} from 'vuex-router-sync'
+import axios from 'axios'
 import router from './router/index.js'
 import store from './store/index.js'
 import iView from 'iview'
@@ -19,4 +20,10 @@ var vm = new Vue({
   components: {App}
 }).$mount('#app');
 
+const server = vm.$store.state.WEB_SERVER.HOST + ":" + vm.$store.state.WEB_SERVER.PORT + vm.$store.state.WEB_SERVER.BASE_PATH;
+var request = axios.create({
+  baseURL: server
+});
+
+Vue.prototype.$http = request;
 // vm.$router.push({name: 'Login'});
